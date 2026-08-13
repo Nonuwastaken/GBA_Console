@@ -4,7 +4,7 @@ A fully custom-built retro gaming handheld, built from discrete components rathe
 
 ## Motivation
 
-Off-the-shelf retro handhelds abstract away the hardware entirely. This project was built to actually understand and control every subsystem — display driving, input handling, audio, power delivery, and battery management — instead of just flashing an emulator image onto a commercial board. It doubled as a hands-on exercise in integrating several hardware domains (digital I/O, analog sensing, power electronics) with embedded Linux into a single, physically packaged product.
+Off-the-shelf retro handhelds abstract away the hardware entirely. Instead of buying one, I decided to build my own from scratch — a chance to actually understand and control every subsystem — display driving, input handling, audio, power delivery, and battery management — instead of just flashing an emulator image onto a commercial board. It doubled as a hands-on exercise in integrating several hardware domains (digital I/O, analog sensing, power electronics) with embedded Linux into a single, physically packaged product.
 
 ## Features
 
@@ -21,21 +21,30 @@ Off-the-shelf retro handhelds abstract away the hardware entirely. This project 
 - CAD Models: https://cad.onshape.com/documents/c98114f3d22adb09159bdb3a/w/b0b86f17a521fcfeee855476/e/23fd8016c83f44d86354cdb0?renderMode=0&uiState=6a7dff6e3107582e18cbe90c
 - Circuit Diagram: https://app.cirkitdesigner.com/project/7a7ec9c0-ae09-4871-93af-93d7c8916aee
 
-## Hardware
+## Hardware Breakdown
 
-| Subsystem | Components |
-|---|---|
-| Compute | Raspberry Pi Zero 2W, RetroPie |
-| Display | 3.5" SPI TFT, ILI9486 driver, running stable at 16MHz SPI |
-| Input | MCP23017 I/O expander reading all physical buttons, exposed to RetroPie as a virtual gamepad via a custom `uinput` driver (`mcp_gamepad.py`) |
-| Audio | PCM5102 I2S DAC → PAM8403 amplifier |
-| Connectivity | Onboard Wi-Fi and Bluetooth |
-| Battery | 2× Li-ion cells wired in parallel (1S pack) |
-| Charging | TP4056 module |
-| Protection | Dedicated 1S BMS between the raw cells and the rest of the circuit, handling over-charge/over-discharge/over-current protection (see *Design Iterations* below) |
-| Power rail | MT3608 boost converter, stepping the battery up to a stable 5V rail |
-| Battery monitoring | Voltage-divider sensor into a PCF8591 external ADC over I2C (calibrated multiplier), since the Pi's GPIO has no native analog input |
-| Enclosure | Custom-designed, 3D-printed shell |
+**Compute & Display**
+- Raspberry Pi Zero 2W running RetroPie
+- 3.5" SPI TFT display, ILI9486 driver, running stable at 16MHz SPI
+
+**Input**
+- MCP23017 I/O expander reading all physical buttons (D-pad, action buttons, volume, turbo/speed), exposed to RetroPie as a virtual gamepad via a custom `uinput` driver (`mcp_gamepad.py`)
+
+**Audio**
+- PCM5102 I2S DAC → PAM8403 amplifier
+
+**Connectivity**
+- Onboard Wi-Fi and Bluetooth
+
+**Power System**
+- Battery: 2× Li-ion cells wired in parallel (1S pack)
+- Charging: TP4056 module
+- Protection: dedicated 1S BMS between the raw cells and the rest of the circuit, handling over-charge/over-discharge/over-current protection (see *Design Iterations* below)
+- Power rail: MT3608 boost converter, stepping the battery up to a stable 5V rail
+- Battery monitoring: voltage-divider sensor into a PCF8591 external ADC over I2C (calibrated multiplier), since the Pi's GPIO has no native analog input
+
+**Enclosure**
+- Custom-designed, 3D-printed shell
 
 ## Software & Debugging
 
