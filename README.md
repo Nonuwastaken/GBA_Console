@@ -18,7 +18,7 @@ Off-the-shelf retro handhelds abstract away the hardware entirely. This project 
 ## Resources
 
 - Budget Sheet: https://docs.google.com/spreadsheets/d/1srqWW1JxbvY3oqgRoeJ9-f11bGZaD1YcLMDTcUJRfcI/edit?usp=sharing
-- CAD Models (enclosure): https://cad.onshape.com/documents/c98114f3d22adb09159bdb3a/w/b0b86f17a521fcfeee855476/e/23fd8016c83f44d86354cdb0?renderMode=0&uiState=6a7dff6e3107582e18cbe90c
+- CAD Models: https://cad.onshape.com/documents/c98114f3d22adb09159bdb3a/w/b0b86f17a521fcfeee855476/e/23fd8016c83f44d86354cdb0?renderMode=0&uiState=6a7dff6e3107582e18cbe90c
 - Circuit Diagram: https://app.cirkitdesigner.com/project/7a7ec9c0-ae09-4871-93af-93d7c8916aee
 
 ## Hardware
